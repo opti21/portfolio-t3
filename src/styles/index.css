@@ -1,0 +1,100 @@
+
+.background {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+}
+
+.background:after {
+  animation: grain 8s steps(10) infinite;
+  background-image: url("/noise-transparent.png");
+  content: "";
+  height: 300%;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  top: -100%;
+  width: 300%;
+}
+
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  100% {
+    transform: translate(5%, 0);
+  }
+}
+
+.bg-text-left {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  position: relative;
+  display: block;
+  font-size: 240px;
+  line-height: 229px;
+  /* letter-spacing: 0.24em; */
+  white-space: nowrap;
+  color: rgb(253, 252, 251);
+  width: max-content;
+  text-shadow: rgb(190, 241, 241) -2px -2px 0px, rgb(190, 241, 241) 2px -2px 0px,
+    rgb(16, 17, 13) -2px 2px 0px, rgb(16, 17, 13) 2px 2px 0px;
+  opacity: 0.1;
+  animation: 120s linear 0s infinite normal none running marquee;
+  will-change: transform;
+  /* font-weight: 800; */
+  margin-left: -400px;
+}
+
+.bg-text-right {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  position: relative;
+  display: block;
+  font-size: 240px;
+  line-height: 229px;
+  /* letter-spacing: 0.24em; */
+  white-space: nowrap;
+  color: rgb(253, 252, 251);
+  width: max-content;
+  text-shadow: rgb(16, 17, 13) -2px -2px 0px, rgb(16, 17, 13) 2px -2px 0px,
+    rgb(16, 17, 13) -2px 2px 0px, rgb(16, 17, 13) 2px 2px 0px;
+  opacity: 0.1;
+  animation: 120s linear 0s infinite reverse none running marquee;
+  will-change: transform;
+  font-weight: 800;
+  margin-left: -400px;
+}
