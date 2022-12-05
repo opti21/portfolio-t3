@@ -10,3 +10,36 @@
     animation-delay: 4s;
   }
 }
+
+.card {
+  -webkit-clip-path: polygon(
+    0 10%,
+    5% 0,
+    95% 0,
+    100% 0,
+    100% 90%,
+    95% 100%,
+    0% 100%,
+    0% 90%,
+    0% 10%
+  );
+  clip-path: polygon(
+    0 10%,
+    5% 0,
+    95% 0,
+    100% 0,
+    100% 90%,
+    95% 100%,
+    0% 100%,
+    0% 90%,
+    0% 10%
+  )
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 48
+}
