@@ -61,11 +61,13 @@ const Card: FC<Props> = ({ item, index }) => {
                 </div>
             }
             {item.tech &&
-                <div className="flex gap-2 items-center">
-                    <span className="material-symbols-outlined mr-2">handyman</span>
-                    {item.tech.map(tech => (
-                        <div key={cuid()} className="border border-white rounded-xl p-2">{tech}</div>
-                    ))}
+                <div className="flex flex-row items-center">
+                    <span className="h-full material-symbols-outlined mr-2">handyman</span>
+                    <div className="flex flex-wrap gap-2">
+                        {item.tech.map(tech => (
+                            <div key={cuid()} className="border border-white rounded-xl p-2">{tech}</div>
+                        ))}
+                    </div>
                 </div>
             }
         </animated.div>
