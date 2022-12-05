@@ -28,19 +28,6 @@ export default function Document() {
           crossOrigin="anonymous"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
         />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TKRJMBK5WB"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-TKRJMBK5WB');
-          `}
-        </Script>
       </Head>
       <body>
         <Main />
