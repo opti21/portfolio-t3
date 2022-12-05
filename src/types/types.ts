@@ -17,4 +17,4 @@ export type Project = {
   name: string
   bulletPoints: string[]
   tech: string[]
-}
+};
