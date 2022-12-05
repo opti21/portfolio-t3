@@ -135,7 +135,7 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className="text-white text-center">
-              hey there's more to look at,
+              {`hey there's more to look at,`}
               <br />
               just scroll down :D
             </div>
@@ -161,7 +161,7 @@ const Home: NextPage = () => {
                 className="flex flex-wrap justify-center w-full"
               >
                 {EXPERIENCE.map((experience, index) => {
-                  return (<Card item={experience} index={index} />);
+                  return (<Card key={`${experience.name}`} item={experience} index={index} />);
                 })}
               </div>
             </div>
@@ -175,7 +175,7 @@ const Home: NextPage = () => {
                 className="flex flex-wrap justify-center w-full"
               >
                 {PROJECTS.map((projects, index) => {
-                  return (<Card item={projects} index={index} />);
+                  return (<Card key={`${projects.name}`} item={projects} index={index} />);
                 })}
               </div>
             </div>
