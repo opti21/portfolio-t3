@@ -3,6 +3,7 @@ import { animated, useTrail } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 import { TechSkill } from "../types/types";
 import Icon from "./Icon";
+import cuid from "cuid";
 
 const TECH_SKILLS: TechSkill[] = [
   { name: "Typescript", icon: "typescript-plain" },
@@ -38,7 +39,7 @@ const TechSkills = () => {
         skill ?
           <animated.div
             style={style}
-            key={"skill-" + skill.name + index}
+            key={cuid()}
             className="flex h-24 w-24 flex-col items-center justify-center rounded-lg border p-4"
           >
             <div className="text-base">{skill.name}</div>

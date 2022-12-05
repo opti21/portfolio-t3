@@ -2,6 +2,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { useRef, FC } from "react";
 import { useInView } from "react-intersection-observer";
 import { Item } from "../types/types";
+import cuid from 'cuid';
 
 type Props = {
     item: Item
@@ -54,7 +55,7 @@ const Card: FC<Props> = ({ item, index }) => {
                     <span className="material-symbols-outlined mr-2">format_list_bulleted</span>
                     <ol className="list-disc pl-6">
                         {item.bulletPoints.map((point, index) => (
-                            <li key={`${point}-${index}`}>{point}</li>
+                            <li key={cuid()}>{point}</li>
                         ))}
                     </ol>
                 </div>
@@ -63,7 +64,7 @@ const Card: FC<Props> = ({ item, index }) => {
                 <div className="flex gap-2 items-center">
                     <span className="material-symbols-outlined mr-2">handyman</span>
                     {item.tech.map(tech => (
-                        <div className="border border-white rounded-xl p-2">{tech}</div>
+                        <div key={cuid()} className="border border-white rounded-xl p-2">{tech}</div>
                     ))}
                 </div>
             }

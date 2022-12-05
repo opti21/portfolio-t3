@@ -9,6 +9,7 @@ import Card from "../components/Card";
 import TechSkills from "../components/TechSkills";
 import { useInView } from "react-intersection-observer";
 import Script from "next/script";
+import cuid from "cuid";
 
 
 
@@ -161,7 +162,7 @@ const Home: NextPage = () => {
                 className="flex flex-wrap justify-center w-full"
               >
                 {EXPERIENCE.map((experience, index) => {
-                  return (<Card key={`${experience.name}`} item={experience} index={index} />);
+                  return (<Card key={cuid()} item={experience} index={index} />);
                 })}
               </div>
             </div>
@@ -175,7 +176,7 @@ const Home: NextPage = () => {
                 className="flex flex-wrap justify-center w-full"
               >
                 {PROJECTS.map((projects, index) => {
-                  return (<Card key={`${projects.name}`} item={projects} index={index} />);
+                  return (<Card key={cuid()} item={projects} index={index} />);
                 })}
               </div>
             </div>
