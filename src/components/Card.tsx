@@ -53,8 +53,8 @@ const Card: FC<Props> = ({ item, index }) => {
                 <div className="flex flex-row items-start">
                     <span className="material-symbols-outlined mr-2">format_list_bulleted</span>
                     <ol className="list-disc pl-6">
-                        {item.bulletPoints.map(point => (
-                        <li>{point}</li>
+                        {item.bulletPoints.map((point, index) => (
+                            <li key={`${point}-${index}`}>{point}</li>
                         ))}
                     </ol>
                 </div>
