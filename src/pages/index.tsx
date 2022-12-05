@@ -38,28 +38,47 @@ const EXPERIENCE: Item[] = [
     tech: [
       "React Native"
     ]
-  }
+  },
+  {
+    name: "Opti Media",
+    beginDate: "Jan 2016",
+    endDate: "Current",
+    position: "Freelancer",
+    bulletPoints: [
+      "Coded several applications listed below to help improve several twitch streamer communities that get used by 100s of users daily."
+    ],
+  },
+
 ]
 
 const PROJECTS: Item[] = [
   {
     name: "Seth Drums Song Panel",
+    link: "https://setdrums.com",
     bulletPoints: [
-      "Thumbnail Test is a tool for Youtube creators to A/B test thumbnails and titles on their videos to see what gets the most engagement.",
-      "Overhauled the UI for the entire application to improve UI responsiveness and UX. Integrated Stripe webhook to process subscriptions. With the improved UI/UX the site has reached an MRR of $1000."
+      "Engineered a completely brand-new full-stack application for SethDrum’s moderators to moderate incoming songs. It helped improve their moderation process by 100x.",
     ],
     tech: [
-      "Next.js", "Tailwind",
+      "Typescript", "Next.js", "Prisma", "ChakraUI", "dnd kit", "Redis", "PostgreSQL", "Pusher", "Node.js"
     ]
   },
   {
     name: "Gauntlet Bot",
     link: "https://github.com/opti21/gauntlet-bot",
     bulletPoints: [
-      "Contract work using React Native to add new features to their mobile app and improve their app speed by 20%."
+      "Architected an application that handles submissions for a weekly design contest hosted by a prominent music streamer on Twitch. It handled and stored over 1000s of original works and content created by their community members. "
     ],
     tech: [
-      "React Native"
+      "Typescript", "Next.js", "Ant Design", "Node.js", "Vercel", "Linode", "Docker", "PostgreSQL"
+    ]
+  },
+  {
+    name: "Vibey Bot",
+    bulletPoints: [
+      "Devised a chatbot for a Twitch streamer to collect song requests from chat. It can process 100s of text searches and links across YouTube and Spotify. It is also capable of conducting polls in chat on demand."
+    ],
+    tech: [
+      "Javascript", "EJS", "Node.js", "Express", "Websocket"
     ]
   }
 ]
