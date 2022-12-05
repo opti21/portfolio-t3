@@ -99,19 +99,6 @@ const Home: NextPage = () => {
           content="Just a normal everyday fullstack dev who enjoys programming and building cool things"
         />
         <link rel="icon" href="/favicon.ico" />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TKRJMBK5WB"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-TKRJMBK5WB');
-          `}
-        </Script>
       </Head>
 
       <main className="bg-gradient-to-br from-stone-800 via-violet-800 to-zinc-900 font-work-sans antialiased max-h-screen overflow-y-scroll">
