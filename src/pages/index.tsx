@@ -24,7 +24,7 @@ const EXPERIENCE: Item[] = [
       "Overhauled the UI for the entire application to improve UI responsiveness and UX. Integrated Stripe webhook to process subscriptions. With the improved UI/UX the site has reached an MRR of $1000."
     ],
     tech: [
-      "Next.js", "Tailwind",
+      "Next.js", "Tailwind", "Stripe", "tRPC", "MongoDB", "Prisma", "Webhooks"
     ]
   },
   {
