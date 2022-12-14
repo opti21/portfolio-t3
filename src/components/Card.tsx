@@ -41,7 +41,7 @@ const Card: FC<Props> = ({ item, index }) => {
             {item.link &&
                 <div className="flex flex-row items-center">
                     <span className="material-symbols-outlined mr-2">link</span>
-                    <span className="hover:underline hover:cursor-pointer"><a href={item.link} target='_blank'>{item.link}</a></span>
+                    <span className="hover:underline hover:cursor-pointer"><a href={item.link} target='_blank' rel='noreferrer'>{item.link}</a></span>
                 </div>
             }
             {item.position &&

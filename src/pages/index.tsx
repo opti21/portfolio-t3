@@ -56,7 +56,7 @@ const PROJECTS: Item[] = [
     name: "Seth Drums Song Panel",
     link: "https://sethdrums.com",
     bulletPoints: [
-      `Engineered a completely brand-new full-stack application for SethDrum’s moderators to moderate incoming songs. It helped improve their moderation process by 100x.`,
+      `Engineered a completely brand-new full-stack application for SethDrum's moderators to moderate incoming songs. It helped improve their moderation process by 100x.`,
     ],
     tech: [
       "Typescript", "Next.js", "Prisma", "ChakraUI", "dnd kit", "Redis", "PostgreSQL", "Pusher", "Node.js"
