@@ -1,17 +1,12 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
 
 import Image from "next/image";
-import Icon from "../components/Icon";
-import { Item, Project } from "../types/types";
+import { Item } from "../types/types";
 import Card from "../components/Card";
 import TechSkills from "../components/TechSkills";
 import { useInView } from "react-intersection-observer";
-import Script from "next/script";
 import cuid from "cuid";
-
-
 
 const EXPERIENCE: Item[] = [
   {
@@ -21,6 +16,7 @@ const EXPERIENCE: Item[] = [
     position: "On Contract",
     bulletPoints: [
       "Thumbnail Test is a tool for Youtube creators to A/B test thumbnails and titles on their videos to see what gets the most engagement.",
+      `Used by popular youtube channels with 1 million+ subscribers (<a href="https://www.youtube.com/channel/UCDK9qD5DAQML-pzrtA7A4oA" target="_blank" class="hover:cursor-pointer underline">Offline TV</a>, <a href="https://www.youtube.com/channel/UCGq-a57w-aPwyi3pW7XLiHw" target="_blank" class="hover:cursor-pointer underline">The Diary of A CEO</a>, <a href="https://www.youtube.com/channel/UCpQB577lHFyWTyvrS73Ldlg" target="_blank" class="hover:cursor-pointer underline">Brick Science</a> and more)`,
       "Overhauled the UI for the entire application to improve UI responsiveness and UX. Integrated Stripe webhook to process subscriptions. With the improved UI/UX the site has reached an MRR of $1000."
     ],
     tech: [
