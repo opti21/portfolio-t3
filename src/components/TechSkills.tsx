@@ -1,7 +1,6 @@
-import { Children, FC, ReactNode } from "react";
 import { animated, useTrail } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
-import { TechSkill } from "../types/types";
+import type { TechSkill } from "../types/types";
 import Icon from "./Icon";
 import cuid from "cuid";
 
@@ -18,6 +17,7 @@ const TECH_SKILLS: TechSkill[] = [
 
 const TechSkills = () => {
   const { ref, inView } = useInView({
+    triggerOnce: true,
     threshold: 0,
   });
 

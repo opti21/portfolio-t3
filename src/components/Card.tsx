@@ -1,7 +1,7 @@
 import { useSpring, animated } from "@react-spring/web";
-import { useRef, FC } from "react";
+import type { FC } from "react";
 import { useInView } from "react-intersection-observer";
-import { Item } from "../types/types";
+import type { Item } from "../types/types";
 import cuid from 'cuid';
 
 type Props = {
@@ -10,7 +10,8 @@ type Props = {
 }
 
 const Card: FC<Props> = ({ item, index }) => {
-    const { ref, inView, entry } = useInView({
+    const { ref, inView } = useInView({
+        triggerOnce: true,
         threshold: 0.9,
     });
 

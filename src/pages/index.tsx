@@ -16,11 +16,11 @@ const EXPERIENCE: Item[] = [
     position: "On Contract",
     bulletPoints: [
       "Thumbnail Test is a tool for Youtube creators to A/B test thumbnails and titles on their videos to see what gets the most engagement.",
-      `Used by popular youtube channels with 1 million+ subscribers (<a href="https://www.youtube.com/channel/UCDK9qD5DAQML-pzrtA7A4oA" target="_blank" class="hover:cursor-pointer underline">Offline TV</a>, <a href="https://www.youtube.com/channel/UCGq-a57w-aPwyi3pW7XLiHw" target="_blank" class="hover:cursor-pointer underline">The Diary of A CEO</a>, <a href="https://www.youtube.com/channel/UCpQB577lHFyWTyvrS73Ldlg" target="_blank" class="hover:cursor-pointer underline">Brick Science</a> and more)`,
-      "Overhauled the UI for the entire application to improve UI responsiveness and UX. Integrated Stripe webhook to process subscriptions. With the improved UI/UX the site has reached an MRR of $1000."
+      `Used by popular youtube channels with 1 million+ subscribers (<a href="https://www.youtube.com/channel/UCDK9qD5DAQML-pzrtA7A4oA" target="_blank" class="hover:cursor-pointer underline">Offline TV</a>, <a href="https://www.youtube.com/channel/UCGq-a57w-aPwyi3pW7XLiHw" target="_blank" class="hover:cursor-pointer underline">The Diary of A CEO</a>, and more)`,
+      "Overhauled the UI for the entire application to improve UI responsiveness and UX. Integrated Stripe webhook to process subscriptions. With the improved UI/UX the site has reached an MRR of $3000+."
     ],
     tech: [
-      "Next.js", "Tailwind", "Stripe", "tRPC", "MongoDB", "Prisma", "Webhooks"
+      "Next.js", "Tailwind", "Stripe", "tRPC", "MongoDB", "Prisma", "Redis", "Webhooks"
     ]
   },
   {
@@ -80,11 +80,6 @@ const PROJECTS: Item[] = [
 ]
 
 const Home: NextPage = () => {
-  // const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
-  const { ref, inView, entry } = useInView({
-      threshold: 0,
-  });
-
 
   return (
     <>
@@ -122,13 +117,6 @@ const Home: NextPage = () => {
                   >
                     Github <i className="devicon-github-original" />
                   </a>
-                  {/* <a
-                      href="https://twitter.com/opti21_"
-                      className="twitter font-extralight hover:underline"
-                      target="blank"
-                    >
-                      Twitter <i className="fa-brands fa-twitter" />
-                    </a> */}
                 </div>
               </div>
               <div className="header-content-right flex items-center pt-2 text-white md:px-2 md:pt-0">
