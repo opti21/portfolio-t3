@@ -13,6 +13,8 @@ const TECH_SKILLS: TechSkill[] = [
   { name: "Tailwind", icon: "tailwindcss-plain" },
   { name: "MongoDB", icon: "mongodb-plain" },
   { name: "PostgreSQL", icon: "postgresql-plain" },
+  { name: "Redis", icon: "redis-plain" },
+  { name: "Svelte", icon: "svelte-plain" },
 ];
 
 const TechSkills = () => {
