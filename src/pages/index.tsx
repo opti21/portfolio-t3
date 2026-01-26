@@ -1,26 +1,40 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-
 import Image from "next/image";
 import { Item } from "../types/types";
 import Card from "../components/Card";
 import TechSkills from "../components/TechSkills";
 import { useInView } from "react-intersection-observer";
-import cuid from "cuid";
 
 const EXPERIENCE: Item[] = [
   {
-    name: "Thumbnail Test",
-    beginDate: "Aug 2022",
-    endDate: "Current",
-    position: "On Contract",
+    name: "Shipper",
+    link: "https://shipper.now",
+    beginDate: "Aug 2025",
+    endDate: "Jan 2026",
+    position: "Full Stack Software Engineer (Contract)",
     bulletPoints: [
-      "Thumbnail Test is a tool for Youtube creators to A/B test thumbnails and titles on their videos to see what gets the most engagement.",
-      `Used by popular youtube channels with 1 million+ subscribers (<a href="https://www.youtube.com/channel/UCDK9qD5DAQML-pzrtA7A4oA" target="_blank" class="hover:cursor-pointer underline">Offline TV</a>, <a href="https://www.youtube.com/channel/UCGq-a57w-aPwyi3pW7XLiHw" target="_blank" class="hover:cursor-pointer underline">The Diary of A CEO</a>, and more)`,
-      "Overhauled the UI for the entire application to improve UI responsiveness and UX. Integrated Stripe webhook to process subscriptions. With the improved UI/UX the site has reached an MRR of $3000+."
+      "180+ commits, 767 files, 118K+ lines of code on a Next.js 15 AI-powered platform.",
+      "Built AI chat infrastructure with streaming responses, tool calls, and visual code editing.",
+      "Designed PR preview pipeline with Neon database branching, Railway, and Vercel — fully automated ephemeral environments.",
+      "Migrated sandbox infrastructure from Daytona to Modal, improving reliability and consolidating operations.",
+      "Implemented Stripe billing lifecycle, admin dashboard, and drag-and-drop task management system.",
     ],
     tech: [
-      "Next.js", "Tailwind", "Stripe", "tRPC", "MongoDB", "Prisma", "Redis", "Webhooks"
+      "Next.js 15", "React 19", "TypeScript", "tRPC", "Prisma", "PostgreSQL", "Stripe", "OpenAI/Anthropic APIs", "Vercel", "Neon"
+    ]
+  },
+  {
+    name: "Thumbnail Test",
+    beginDate: "Aug 2022",
+    endDate: "Aug 2025",
+    position: "Contract Developer",
+    bulletPoints: [
+      "A/B testing tool for YouTube creators — used by channels with 1M+ subscribers including Offline TV and The Diary of A CEO.",
+      "Overhauled entire UI/UX, integrated Stripe webhooks. Result: <strong>$3,000+ MRR</strong>.",
+    ],
+    tech: [
+      "Next.js", "Tailwind", "Stripe", "tRPC", "MongoDB", "Prisma", "Redis"
     ]
   },
   {
@@ -29,22 +43,12 @@ const EXPERIENCE: Item[] = [
     endDate: "Apr 2022",
     position: "Contract Mobile Developer",
     bulletPoints: [
-      "Contract work using React Native to add new features to their mobile app and improve their app speed by 20%."
+      "Added features to React Native app. <strong>Improved app speed by 20%</strong>."
     ],
     tech: [
       "React Native"
     ]
   },
-  {
-    name: "Opti Media",
-    beginDate: "Jan 2016",
-    endDate: "Current",
-    position: "Freelancer",
-    bulletPoints: [
-      "Coded several applications listed below to help improve several twitch streamer communities that get used by 100s of users daily."
-    ],
-  },
-
 ]
 
 const PROJECTS: Item[] = [
@@ -52,139 +56,189 @@ const PROJECTS: Item[] = [
     name: "Seth Drums Song Panel",
     link: "https://sethdrums.com",
     bulletPoints: [
-      `Engineered a completely brand-new full-stack application for SethDrum's moderators to moderate incoming songs. It helped improve their moderation process by 100x.`,
+      "Full-stack moderation app for a Twitch streamer. <strong>Improved mod workflow by 100x</strong>. Real-time updates via Pusher, drag-and-drop queue management.",
     ],
     tech: [
-      "Typescript", "Next.js", "Prisma", "ChakraUI", "dnd kit", "Redis", "PostgreSQL", "Pusher", "Node.js"
+      "TypeScript", "Next.js", "Prisma", "Redis", "PostgreSQL", "Pusher"
     ]
   },
   {
     name: "Gauntlet Bot",
     link: "https://github.com/opti21/gauntlet-bot",
     bulletPoints: [
-      "Architected an application that handles submissions for a weekly design contest hosted by a prominent music streamer on Twitch. It handled and stored over 1000s of original works and content created by their community members. "
+      "Submission handler for weekly design contests. <strong>1000+ original works</strong> submitted and stored. Dockerized deployment on Linode.",
     ],
     tech: [
-      "Typescript", "Next.js", "Ant Design", "Node.js", "Vercel", "Linode", "Docker", "PostgreSQL"
+      "TypeScript", "Next.js", "PostgreSQL", "Docker", "Vercel"
     ]
   },
-  {
-    name: "Vibey Bot",
-    bulletPoints: [
-      "Devised a chatbot for a Twitch streamer to collect song requests from chat. It can process 100s of text searches and links across YouTube and Spotify. It is also capable of conducting polls in chat on demand."
-    ],
-    tech: [
-      "Javascript", "EJS", "Node.js", "Express", "Websocket"
-    ]
-  }
 ]
 
+const SectionTitle = ({ children, accent }: { children: React.ReactNode; accent?: string }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0 });
+
+  return (
+    <div ref={ref} className="mb-8">
+      <h2
+        className={`font-display text-3xl md:text-4xl font-bold tracking-tight ${
+          inView ? "animate-fade-up" : "opacity-0"
+        }`}
+      >
+        {children}
+        {accent && <span className="gradient-text"> {accent}</span>}
+      </h2>
+    </div>
+  );
+};
+
 const Home: NextPage = () => {
+  const { ref: heroRef, inView: heroInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <>
       <Head>
-        <title>Brandon (dev)</title>
+        <title>Brandon R. | Full Stack Developer</title>
         <meta
           name="description"
-          content="Just a normal everyday fullstack dev who enjoys programming and building cool things"
+          content="Full stack developer specializing in React, Next.js, and TypeScript. Building performant web applications."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-gradient-to-br from-stone-800 via-violet-800 to-zinc-900 font-work-sans antialiased max-h-screen overflow-y-scroll">
-        <header className="flex h-screen w-full flex-col md:justify-center overflow-hidden">
-          <div className="flex items-center justify-center">
-            <div
-              className="m-4 flex flex-col items-center rounded-lg bg-opacity-75 p-2  lg:flex-row lg:p-4"
-            >
-              <div className="text-center max-w-2xl px-2 md:pt-0 text-white">
-                <h2 className="w-full">
-                  <span className=" font-black italic text-8xl w-full bg-clip-text text-transparent bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-fuchsia-200 via-purple-600 to-amber-400">HELLO</span>
-                  <br />
-                  <span className=" text-3xl md:text-5xl">{`I'm Brandon(or opti)!`}</span>
-                </h2>
-                <p className="max-w-lg py-4 text-2xl font-extralight text-white">
-                  Just a normal everyday full stack dev who enjoys programming
-                  and building cool things.
+      <main className="bg-surface min-h-screen overflow-x-hidden">
+        {/* Subtle background */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-cyan/8 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent-violet/8 rounded-full blur-[100px]" />
+        </div>
+
+        {/* Hero Section - Compact */}
+        <header
+          ref={heroRef}
+          className="relative min-h-[70vh] flex items-center px-6 md:px-12 lg:px-24 pt-12"
+        >
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start">
+              {/* Profile Image - Smaller */}
+              <div
+                className={`shrink-0 ${
+                  heroInView ? "animate-scale-in" : "opacity-0"
+                }`}
+              >
+                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border border-white/[0.1]">
+                  <Image
+                    src="/gopher_pfp.jpg"
+                    alt="Brandon R."
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="flex-1 text-center md:text-left">
+                <div
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-elevated/80 border border-white/[0.06] mb-4 ${
+                    heroInView ? "animate-fade-in" : "opacity-0"
+                  }`}
+                >
+                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                  <span className="text-xs text-text-secondary font-medium">Available for contract work · Houston, TX</span>
+                </div>
+
+                <h1
+                  className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-4 ${
+                    heroInView ? "animate-fade-up" : "opacity-0"
+                  }`}
+                >
+                  <span className="text-text-primary">Brandon R.</span>
+                </h1>
+
+                <p
+                  className={`text-lg md:text-xl text-text-secondary font-light leading-relaxed max-w-xl mb-6 ${
+                    heroInView ? "animate-fade-up delay-100" : "opacity-0"
+                  }`}
+                >
+                  Full stack developer. 9+ years building web apps, AI integrations, and developer tools.
                 </p>
 
-                <div className="gap-2 text-2xl">
+                {/* CTA Links */}
+                <div
+                  className={`flex flex-wrap gap-3 justify-center md:justify-start ${
+                    heroInView ? "animate-fade-up delay-200" : "opacity-0"
+                  }`}
+                >
+                  <a
+                    href="https://www.linkedin.com/in/opti/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-accent-cyan text-surface font-semibold rounded-lg hover:bg-accent-cyan/90 transition-colors"
+                  >
+                    <i className="devicon-linkedin-plain" />
+                    LinkedIn
+                  </a>
                   <a
                     href="https://github.com/opti21"
-                    target="blank"
-                    className="discord font-extralight hover:underline"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-surface-elevated border border-white/[0.08] rounded-lg hover:border-white/[0.15] transition-colors"
                   >
-                    Github <i className="devicon-github-original" />
+                    <i className="devicon-github-original" />
+                    GitHub
                   </a>
                 </div>
               </div>
-              <div className="header-content-right flex items-center pt-2 text-white md:px-2 md:pt-0">
-                <Image
-                  className="header-image ml-1 rounded-md lg:ml-4"
-                  src="/gopher_pfp.jpg"
-                  alt="profile of brandon as a gopher"
-                  width="300"
-                  height="300"
-                  priority={true}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center justify-center">
-            <div className="flex justify-center">
-              <div className="origin-bottom-right animate-wave text-3xl">
-                👋
-              </div>
-            </div>
-            <div className="text-white text-center">
-              {`hey there's more to look at,`}
-              <br />
-              just scroll down :D
             </div>
           </div>
         </header>
 
-        <div className="container mx-auto w-full  text-white">
-          <div className="flex w-full flex-col items-center pt-6">
-            <div>
-              <h2 className="text-6xl py-2 w-full text-white font-black italic text-center">
-                My <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-300 to-pink-600">Skills</span>
-              </h2>
+        {/* Skills Section - Compact */}
+        <section className="relative py-16 px-6 md:px-12 lg:px-24">
+          <div className="max-w-6xl mx-auto">
+            <SectionTitle accent="Stack">Tech</SectionTitle>
+            <TechSkills />
+          </div>
+        </section>
 
-                <TechSkills />
-            </div>
-
-            <div className="mt-8">
-              <h2 className="text-6xl py-2 w-full text-white font-black italic text-center">
-                My <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-300 to-pink-600">Experience</span>
-              </h2>
-
-              <div
-                className="flex flex-wrap justify-center w-full"
-              >
-                {EXPERIENCE.map((experience, index) => {
-                  return (<Card key={cuid()} item={experience} index={index} />);
-                })}
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <h2 className="text-6xl py-2 w-full text-white font-black italic text-center">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-300 to-pink-600">Projects</span>
-              </h2>
-
-              <div
-                className="flex flex-wrap justify-center w-full"
-              >
-                {PROJECTS.map((projects, index) => {
-                  return (<Card key={cuid()} item={projects} index={index} />);
-                })}
-              </div>
+        {/* Experience Section */}
+        <section id="experience" className="relative py-16 px-6 md:px-12 lg:px-24">
+          <div className="max-w-6xl mx-auto">
+            <SectionTitle accent="Experience">Work</SectionTitle>
+            <div className="space-y-4">
+              {EXPERIENCE.map((experience, index) => (
+                <Card key={experience.name} item={experience} index={index} />
+              ))}
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Projects Section */}
+        <section className="relative py-16 px-6 md:px-12 lg:px-24">
+          <div className="max-w-6xl mx-auto">
+            <SectionTitle accent="Projects">Side</SectionTitle>
+            <div className="space-y-4">
+              {PROJECTS.map((project, index) => (
+                <Card key={project.name} item={project} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer - Minimal */}
+        <footer className="relative py-8 px-6 md:px-12 lg:px-24 border-t border-white/[0.04]">
+          <div className="max-w-6xl mx-auto flex justify-between items-center text-sm text-text-muted">
+            <span>Brandon R.</span>
+            <a
+              href="https://github.com/opti21"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-text-secondary transition-colors"
+            >
+              github.com/opti21
+            </a>
+          </div>
+        </footer>
       </main>
     </>
   );
