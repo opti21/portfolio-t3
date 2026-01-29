@@ -30,11 +30,12 @@ const EXPERIENCE: Item[] = [
     endDate: "Aug 2025",
     position: "Contract Developer",
     bulletPoints: [
-      "A/B testing tool for YouTube creators — used by channels with 1M+ subscribers including Offline TV and The Diary of A CEO.",
-      "Overhauled entire UI/UX, integrated Stripe webhooks. Result: <strong>$3,000+ MRR</strong>.",
+      "Key team member on a widely used A/B testing tool for YouTube thumbnails and titles.",
+      "Revamped UI/UX and integrated Stripe webhooks for efficient subscription processing.",
+      "Drove MRR growth from $500 to <strong>$20,000+</strong> through continuous feature development.",
     ],
     tech: [
-      "Next.js", "Tailwind", "Stripe", "tRPC", "MongoDB", "Prisma", "Redis"
+      "Next.js", "Tailwind CSS", "MongoDB", "Redis", "Node.js"
     ]
   },
   {
