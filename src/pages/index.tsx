@@ -14,7 +14,7 @@ const EXPERIENCE: Item[] = [
     endDate: "Jan 2026",
     position: "Full Stack Software Engineer (Contract)",
     bulletPoints: [
-      "180+ commits, 767 files, 118K+ lines of code on an AI-powered platform.",
+      "Built and maintained an AI-powered platform.",
       "Built AI chat infrastructure with streaming responses, tool calls, and visual code editing.",
       "Designed PR preview pipeline with database branching and fully automated ephemeral environments.",
       "Migrated sandbox infrastructure, improving reliability and consolidating operations.",
