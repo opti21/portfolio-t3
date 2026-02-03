@@ -14,15 +14,12 @@ const EXPERIENCE: Item[] = [
     endDate: "Jan 2026",
     position: "Full Stack Software Engineer (Contract)",
     bulletPoints: [
-      "180+ commits, 767 files, 118K+ lines of code on a Next.js 15 AI-powered platform.",
+      "180+ commits, 767 files, 118K+ lines of code on an AI-powered platform.",
       "Built AI chat infrastructure with streaming responses, tool calls, and visual code editing.",
-      "Designed PR preview pipeline with Neon database branching, Railway, and Vercel — fully automated ephemeral environments.",
-      "Migrated sandbox infrastructure from Daytona to Modal, improving reliability and consolidating operations.",
-      "Implemented Stripe billing lifecycle, admin dashboard, and drag-and-drop task management system.",
+      "Designed PR preview pipeline with database branching and fully automated ephemeral environments.",
+      "Migrated sandbox infrastructure, improving reliability and consolidating operations.",
+      "Implemented billing lifecycle, admin dashboard, and drag-and-drop task management system.",
     ],
-    tech: [
-      "Next.js 15", "React 19", "TypeScript", "tRPC", "Prisma", "PostgreSQL", "Stripe", "OpenAI/Anthropic APIs", "Vercel", "Neon"
-    ]
   },
   {
     name: "Thumbnail Test",
@@ -31,12 +28,8 @@ const EXPERIENCE: Item[] = [
     position: "Contract Developer",
     bulletPoints: [
       "Key team member on a widely used A/B testing tool for YouTube thumbnails and titles.",
-      "Revamped UI/UX and integrated Stripe webhooks for efficient subscription processing.",
-      "Drove MRR growth from $500 to <strong>$20,000+</strong> through continuous feature development.",
+      "Revamped UI/UX and integrated webhooks for efficient subscription processing.",
     ],
-    tech: [
-      "Next.js", "Tailwind CSS", "MongoDB", "Redis", "Node.js"
-    ]
   },
   {
     name: "Brickseek",
