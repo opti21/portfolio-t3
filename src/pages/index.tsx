@@ -8,8 +8,7 @@ import { useInView } from "react-intersection-observer";
 
 const EXPERIENCE: Item[] = [
   {
-    name: "Shipper",
-    link: "https://shipper.now",
+    name: "AI Dev Tools Startup",
     beginDate: "Aug 2025",
     endDate: "Jan 2026",
     position: "Full Stack Software Engineer (Contract)",
