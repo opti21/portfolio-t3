@@ -16,6 +16,10 @@ const TECH_SKILLS: TechSkill[] = [
 ];
 
 const TechSkills = () => {
+  const reducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0,
@@ -28,12 +32,14 @@ const TechSkills = () => {
     y: inView ? 0 : 10,
     scale: inView ? 1 : 0.95,
     from: { opacity: 0, y: 10, scale: 0.95 },
+    immediate: reducedMotion,
+    delay: reducedMotion ? 0 : undefined,
   });
 
   return (
     <div
       ref={ref}
-      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
     >
       {trail.map((style, index) => {
         const skill = TECH_SKILLS[index];
@@ -42,25 +48,25 @@ const TechSkills = () => {
           <animated.div
             style={style}
             key={skill.name}
-            className="group relative glass-card p-5 flex flex-col items-center justify-center gap-3 hover-glow cursor-default"
+            className="glass-card hover-glow group relative flex cursor-default flex-col items-center justify-center gap-3 p-5"
           >
             {/* Hover glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/0 via-transparent to-accent-violet/0 group-hover:from-accent-cyan/5 group-hover:to-accent-violet/5 rounded-2xl transition-all duration-500" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent-cyan/0 via-transparent to-accent-violet/0 transition-all duration-500 group-hover:from-accent-cyan/5 group-hover:to-accent-violet/5" />
 
             {/* Icon */}
             <div className="relative">
               <i
-                className={`devicon-${skill.icon} text-4xl text-text-secondary group-hover:text-accent-cyan transition-colors duration-300`}
+                className={`devicon-${skill.icon} text-4xl text-text-secondary transition-colors duration-300 group-hover:text-accent-cyan`}
               />
             </div>
 
             {/* Label */}
-            <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors duration-300">
+            <span className="text-sm font-medium text-text-secondary transition-colors duration-300 group-hover:text-text-primary">
               {skill.name}
             </span>
 
             {/* Bottom accent line */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-accent-cyan group-hover:w-12 transition-all duration-500" />
+            <div className="absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-accent-cyan transition-all duration-500 group-hover:w-12" />
           </animated.div>
         ) : null;
       })}

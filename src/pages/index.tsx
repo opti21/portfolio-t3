@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Item } from "../types/types";
 import Card from "../components/Card";
 import TechSkills from "../components/TechSkills";
+import BirdMigration from "../components/BirdMigration";
 import { useInView } from "react-intersection-observer";
 
 const EXPERIENCE: Item[] = [
@@ -23,7 +24,7 @@ const EXPERIENCE: Item[] = [
   {
     name: "Thumbnail Test",
     beginDate: "Aug 2022",
-    endDate: "Aug 2025",
+    endDate: "Sep 2025",
     position: "Contract Developer",
     bulletPoints: [
       "Key team member on a widely used A/B testing tool for YouTube thumbnails and titles.",
@@ -36,13 +37,11 @@ const EXPERIENCE: Item[] = [
     endDate: "Apr 2022",
     position: "Contract Mobile Developer",
     bulletPoints: [
-      "Added features to React Native app. <strong>Improved app speed by 20%</strong>."
+      "Added features to React Native app. <strong>Improved app speed by 20%</strong>.",
     ],
-    tech: [
-      "React Native"
-    ]
+    tech: ["React Native"],
   },
-]
+];
 
 const PROJECTS: Item[] = [
   {
@@ -51,9 +50,7 @@ const PROJECTS: Item[] = [
     bulletPoints: [
       "Full-stack moderation app for a Twitch streamer. <strong>Improved mod workflow by 100x</strong>. Real-time updates via Pusher, drag-and-drop queue management.",
     ],
-    tech: [
-      "TypeScript", "Next.js", "Prisma", "Redis", "PostgreSQL", "Pusher"
-    ]
+    tech: ["TypeScript", "Next.js", "Prisma", "Redis", "PostgreSQL", "Pusher"],
   },
   {
     name: "Gauntlet Bot",
@@ -61,19 +58,23 @@ const PROJECTS: Item[] = [
     bulletPoints: [
       "Submission handler for weekly design contests. <strong>1000+ original works</strong> submitted and stored. Dockerized deployment on Linode.",
     ],
-    tech: [
-      "TypeScript", "Next.js", "PostgreSQL", "Docker", "Vercel"
-    ]
+    tech: ["TypeScript", "Next.js", "PostgreSQL", "Docker", "Vercel"],
   },
-]
+];
 
-const SectionTitle = ({ children, accent }: { children: React.ReactNode; accent?: string }) => {
+const SectionTitle = ({
+  children,
+  accent,
+}: {
+  children: React.ReactNode;
+  accent?: string;
+}) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0 });
 
   return (
     <div ref={ref} className="mb-8">
       <h2
-        className={`font-display text-3xl md:text-4xl font-bold tracking-tight ${
+        className={`font-display text-3xl font-bold tracking-tight md:text-4xl ${
           inView ? "animate-fade-up" : "opacity-0"
         }`}
       >
@@ -85,7 +86,10 @@ const SectionTitle = ({ children, accent }: { children: React.ReactNode; accent?
 };
 
 const Home: NextPage = () => {
-  const { ref: heroRef, inView: heroInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: heroRef, inView: heroInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <>
@@ -98,27 +102,30 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-surface min-h-screen overflow-x-hidden">
-        {/* Subtle background */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-accent-cyan/8 rounded-full blur-[120px]" />
-          <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent-violet/8 rounded-full blur-[100px]" />
+      <main className="min-h-screen overflow-x-hidden bg-surface">
+        {/* Bird migration background */}
+        <BirdMigration />
+
+        {/* Subtle gradient orbs */}
+        <div className="pointer-events-none fixed inset-0 overflow-hidden">
+          <div className="bg-accent-cyan/8 absolute -right-40 -top-40 h-96 w-96 rounded-full blur-[120px]" />
+          <div className="bg-accent-violet/8 absolute -left-40 top-1/2 h-80 w-80 rounded-full blur-[100px]" />
         </div>
 
         {/* Hero Section - Compact */}
         <header
           ref={heroRef}
-          className="relative min-h-[70vh] flex items-center px-6 md:px-12 lg:px-24 pt-12"
+          className="relative flex min-h-[70vh] items-center px-6 pt-12 md:px-12 lg:px-24"
         >
-          <div className="max-w-6xl mx-auto w-full">
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-12">
               {/* Profile Image - Smaller */}
               <div
                 className={`shrink-0 ${
                   heroInView ? "animate-scale-in" : "opacity-0"
                 }`}
               >
-                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border border-white/[0.1]">
+                <div className="relative h-32 w-32 overflow-hidden rounded-2xl border border-white/[0.1] md:h-40 md:w-40">
                   <Image
                     src="/gopher_pfp.jpg"
                     alt="Brandon R."
@@ -132,16 +139,18 @@ const Home: NextPage = () => {
               {/* Text Content */}
               <div className="flex-1 text-center md:text-left">
                 <div
-                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-elevated/80 border border-white/[0.06] mb-4 ${
+                  className={`mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.06] bg-surface-elevated/80 px-3 py-1.5 ${
                     heroInView ? "animate-fade-in" : "opacity-0"
                   }`}
                 >
-                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                  <span className="text-xs text-text-secondary font-medium">Available for contract work · Houston, TX</span>
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+                  <span className="text-xs font-medium text-text-secondary">
+                    Available for contract work
+                  </span>
                 </div>
 
                 <h1
-                  className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-4 ${
+                  className={`mb-4 font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl ${
                     heroInView ? "animate-fade-up" : "opacity-0"
                   }`}
                 >
@@ -149,16 +158,17 @@ const Home: NextPage = () => {
                 </h1>
 
                 <p
-                  className={`text-lg md:text-xl text-text-secondary font-light leading-relaxed max-w-xl mb-6 ${
+                  className={`mb-6 max-w-xl text-lg font-light leading-relaxed text-text-secondary md:text-xl ${
                     heroInView ? "animate-fade-up delay-100" : "opacity-0"
                   }`}
                 >
-                  Full stack developer. 9+ years building web apps, AI integrations, and developer tools.
+                  Full stack developer. 9+ years building web apps, AI
+                  integrations, and developer tools.
                 </p>
 
                 {/* CTA Links */}
                 <div
-                  className={`flex flex-wrap gap-3 justify-center md:justify-start ${
+                  className={`flex flex-wrap justify-center gap-3 md:justify-start ${
                     heroInView ? "animate-fade-up delay-200" : "opacity-0"
                   }`}
                 >
@@ -166,7 +176,7 @@ const Home: NextPage = () => {
                     href="https://www.linkedin.com/in/opti/"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 bg-accent-cyan text-surface font-semibold rounded-lg hover:bg-accent-cyan/90 transition-colors"
+                    className="flex items-center gap-2 rounded-lg bg-accent-cyan px-5 py-2.5 font-semibold text-surface transition-colors hover:bg-accent-cyan/90"
                   >
                     <i className="devicon-linkedin-plain" />
                     LinkedIn
@@ -175,7 +185,7 @@ const Home: NextPage = () => {
                     href="https://github.com/opti21"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 bg-surface-elevated border border-white/[0.08] rounded-lg hover:border-white/[0.15] transition-colors"
+                    className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-surface-elevated px-5 py-2.5 transition-colors hover:border-white/[0.15]"
                   >
                     <i className="devicon-github-original" />
                     GitHub
@@ -187,16 +197,19 @@ const Home: NextPage = () => {
         </header>
 
         {/* Skills Section - Compact */}
-        <section className="relative py-16 px-6 md:px-12 lg:px-24">
-          <div className="max-w-6xl mx-auto">
+        <section className="relative px-6 py-16 md:px-12 lg:px-24">
+          <div className="mx-auto max-w-6xl">
             <SectionTitle accent="Stack">Tech</SectionTitle>
             <TechSkills />
           </div>
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="relative py-16 px-6 md:px-12 lg:px-24">
-          <div className="max-w-6xl mx-auto">
+        <section
+          id="experience"
+          className="relative px-6 py-16 md:px-12 lg:px-24"
+        >
+          <div className="mx-auto max-w-6xl">
             <SectionTitle accent="Experience">Work</SectionTitle>
             <div className="space-y-4">
               {EXPERIENCE.map((experience, index) => (
@@ -207,8 +220,8 @@ const Home: NextPage = () => {
         </section>
 
         {/* Projects Section */}
-        <section className="relative py-16 px-6 md:px-12 lg:px-24">
-          <div className="max-w-6xl mx-auto">
+        <section className="relative px-6 py-16 md:px-12 lg:px-24">
+          <div className="mx-auto max-w-6xl">
             <SectionTitle accent="Projects">Side</SectionTitle>
             <div className="space-y-4">
               {PROJECTS.map((project, index) => (
@@ -219,14 +232,14 @@ const Home: NextPage = () => {
         </section>
 
         {/* Footer - Minimal */}
-        <footer className="relative py-8 px-6 md:px-12 lg:px-24 border-t border-white/[0.04]">
-          <div className="max-w-6xl mx-auto flex justify-between items-center text-sm text-text-muted">
+        <footer className="relative border-t border-white/[0.04] px-6 py-8 md:px-12 lg:px-24">
+          <div className="mx-auto flex max-w-6xl items-center justify-between text-sm text-text-muted">
             <span>Brandon R.</span>
             <a
               href="https://github.com/opti21"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-text-secondary transition-colors"
+              className="transition-colors hover:text-text-secondary"
             >
               github.com/opti21
             </a>

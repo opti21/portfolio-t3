@@ -9,6 +9,10 @@ type Props = {
 };
 
 const Card: FC<Props> = ({ item, index }) => {
+  const reducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0,
@@ -19,7 +23,8 @@ const Card: FC<Props> = ({ item, index }) => {
     opacity: inView ? 1 : 0,
     y: inView ? 0 : 15,
     from: { opacity: 0, y: 15 },
-    delay: index * 40,
+    delay: reducedMotion ? 0 : index * 40,
+    immediate: reducedMotion,
     config: { tension: 400, friction: 30 },
   });
 
@@ -27,16 +32,15 @@ const Card: FC<Props> = ({ item, index }) => {
     <animated.article
       style={spring}
       ref={ref}
-      className="group relative glass-card p-6 md:p-8 hover-glow transition-all duration-500"
+      className="glass-card hover-glow group relative p-6 transition-all duration-500 md:p-8"
     >
-      {/* Accent line on hover */}
-      <div className="absolute top-0 left-0 w-0 h-px bg-gradient-to-r from-accent-cyan via-accent-violet to-accent-amber group-hover:w-full transition-all duration-700" />
+      <div className="card-hover-border pointer-events-none absolute inset-0 rounded-2xl" />
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="flex-1">
           {/* Title with optional link */}
-          <div className="flex items-center gap-3 mb-2">
+          <div className="mb-2 flex items-center gap-3">
             {item.link ? (
               <a
                 href={item.link}
@@ -44,11 +48,11 @@ const Card: FC<Props> = ({ item, index }) => {
                 rel="noreferrer"
                 className="group/link flex items-center gap-2"
               >
-                <h3 className="font-display text-xl md:text-2xl font-semibold text-text-primary group-hover/link:text-accent-cyan transition-colors">
+                <h3 className="font-display text-xl font-semibold text-text-primary transition-colors group-hover/link:text-accent-cyan md:text-2xl">
                   {item.name}
                 </h3>
                 <svg
-                  className="w-4 h-4 text-text-muted group-hover/link:text-accent-cyan group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all"
+                  className="h-4 w-4 text-text-muted transition-all group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-accent-cyan"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -62,7 +66,7 @@ const Card: FC<Props> = ({ item, index }) => {
                 </svg>
               </a>
             ) : (
-              <h3 className="font-display text-xl md:text-2xl font-semibold text-text-primary">
+              <h3 className="font-display text-xl font-semibold text-text-primary md:text-2xl">
                 {item.name}
               </h3>
             )}
@@ -70,7 +74,7 @@ const Card: FC<Props> = ({ item, index }) => {
 
           {/* Position */}
           {item.position && (
-            <p className="text-accent-cyan font-medium text-sm uppercase tracking-wider">
+            <p className="text-sm font-medium uppercase tracking-wider text-accent-cyan">
               {item.position}
             </p>
           )}
@@ -78,9 +82,9 @@ const Card: FC<Props> = ({ item, index }) => {
 
         {/* Date badge */}
         {item.beginDate && item.endDate && (
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-surface-muted/50 rounded-lg border border-white/[0.04]">
+          <div className="flex items-center gap-2 rounded-lg border border-white/[0.04] bg-surface-muted/50 px-3 py-1.5">
             <svg
-              className="w-4 h-4 text-text-muted"
+              className="h-4 w-4 text-text-muted"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -104,8 +108,11 @@ const Card: FC<Props> = ({ item, index }) => {
         <div className="mb-6">
           <ul className="space-y-3">
             {item.bulletPoints.map((point, i) => (
-              <li key={i} className="flex gap-3 text-text-secondary leading-relaxed">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan/60 mt-2.5 shrink-0" />
+              <li
+                key={i}
+                className="flex gap-3 leading-relaxed text-text-secondary"
+              >
+                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-cyan/60" />
                 <span dangerouslySetInnerHTML={{ __html: point }} />
               </li>
             ))}
@@ -119,7 +126,7 @@ const Card: FC<Props> = ({ item, index }) => {
           {item.tech.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1.5 text-xs font-medium text-text-secondary bg-surface-muted/60 border border-white/[0.04] rounded-lg hover:border-accent-cyan/20 hover:text-accent-cyan transition-all duration-300"
+              className="rounded-lg border border-white/[0.04] bg-surface-muted/60 px-3 py-1.5 text-xs font-medium text-text-secondary transition-all duration-300 hover:border-accent-cyan/20 hover:text-accent-cyan"
             >
               {tech}
             </span>
