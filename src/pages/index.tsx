@@ -145,7 +145,7 @@ const Home: NextPage = () => {
                 >
                   <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
                   <span className="text-xs font-medium text-text-secondary">
-                    Available for contract work
+                    Available for work
                   </span>
                 </div>
 
